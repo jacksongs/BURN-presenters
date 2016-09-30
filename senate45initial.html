@@ -1,0 +1,503 @@
+        <link type="text/css" rel="stylesheet" href="/static/css/classic.css"> <!--datepicker-->
+        <link type="text/css" rel="stylesheet" href="/static/css/classic.date.css"> <!--datepicker-->
+        <link type="text/css" rel="stylesheet" href="/static/css/style.css">
+
+    	<div class="container">
+
+	    		<div class="col-xs-12 col-md-8">
+		    		<section id="pan-when-zoomed">
+				      	<div id="img_container">
+				      	<div class="parent" style="overflow: hidden; position: relative;">
+							<div class="panzoom" style="transform: matrix(1, 0, 0, 1, 0, 0); transform-origin: 50% 50% 0px; cursor: move; transition: none;">
+								<img src="/static/img/loading.gif">
+			          		</div>
+			          		<div role="group" class="btn-group">
+						        <button type="button" class="btn btn-transparent zoom-in"><i class="fa fa-plus" aria-hidden="true"></i></button>
+						        <button type="button" class="btn btn-transparent zoom-out"><i class="fa fa-minus" aria-hidden="true"></i></button>
+						        <button type="button" class="btn btn-transparent reset"><i class="fa fa-undo" aria-hidden="true"></i></button>
+					      	</div>
+			          		</div>
+		        		</div>
+				    </section>
+	    		</div>
+
+	    		<div class="col-xs-12 col-md-4 form">
+	    			<div id="wrapper">
+	    				<div id="loading">
+	    					<h5>Loading first task...</h5>
+	    				</div>
+	    				<div id="firstup" class="alert alert-danger">
+						  	<button class="close" data-dismiss="alert" aria-label="close">&times;</button>
+	    					<h3>Welcome to the BURN</h3>
+			    			<h5>The document in the box is one page of the Federal Register of Interests for Senators in the 44th Parliament (that's 2013 to 2016).<br><br>Move the page around, zoom in or press <i class="fa fa-undo" aria-hidden="true"></i> to reset changes if the scrolling gets wacky. <br><br>When you are ready to help bring this bad boy of a register into the 21st century, dismiss this message and get on with it. </h5>
+							  
+						</div>
+	    				<div id='notes' style="display: none">
+							  <!-- Success and Error Messages for the user -->
+							  <div class="span6 offset2" style="height:50px">
+
+
+
+		    				<div id="nameup">
+				    			<h5>First up, you are going to be asked for some basic information about the page, including the listed date and how many separate items it contains.</h5><h5 id="noma"></h5>
+								<button class='pull-right btn btn-default nameentry'>Next</button>
+								
+							</div>
+
+		    				<div id="dateup">
+				    			<h5> For this page, is there a date stamp on it to say when it was received by the registry?</h5>
+								<div class="btn-group-vertical" role="group">
+							 	  <button name="dateup" value="Yes" class="btn btn-info choice">Yes</button>
+								  <button name="dateup" value="No" class="btn btn-info choice">No</button>
+								  <button name="dateup" value="Illegible" class="btn btn-info choice">It's there but not clear</button>
+								  
+								</div>
+							</div>
+
+		    				<div id="datewhat">
+				    			<h5> According to the stamp, what date was this page received by the registry?</h5>
+								<div style="position: relative">
+								<input class='datepicker' value="Press/click here">
+								<br><br>
+								<button class='pull-right btn btn-default dateentry'>Next</button>
+								</div>
+								
+							</div>
+
+		    				<div id="howmany">
+				    			<h5> How many separate items are being declared/entered by the Senator on this page?
+				    			</h5>
+								<input id='howmanyinput' name="howmany" type='tel' min=0 value=0 \>
+								<div id="updown" class='btn-group'>
+						            <button class="btn btn-default" id="btnIncrease">&nbsp;+&nbsp;</button>
+						            <button class="btn btn-default" id="btnDecrease">&nbsp;-&nbsp;</button>
+						        </div>
+						        <h5><small>Oi! Ask yourself how many "things or groups of identical things" are being declared. Quite a few pages in the register are cover sheets or have no declarations, so don't be shy if you think the answer is nought.</small></h5>
+								<br><button class='pull-right btn btn-default entryentry'>Next</button>
+							</div>
+
+							<div id="holder">
+								<p id="summary">Is this correct:?</p>
+								<div class="btn-group">
+								<button class='btn btn-default tostart'>Back to start</button><button class='btn btn-default phase'>Onward!</button>
+								</div>
+							</div>
+
+		    				<div id="typeup">
+		    					<h5> Now, let's go through the actual disclosures made on this page, one by one.</h5><br>
+								<h4 class='headcount'>Entry </h4>
+								<h5>Is there a valid category (or "item") listed for this entry? It may be indicated by the box on the form.</h5>
+								<div class="btn-group" role="group">
+								  <button name="typeup" value="No" class="btn btn-warning choice">&nbsp;&nbsp;&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;</button>
+								  <button name="typeup" value="Yes" class="btn btn-warning choice">&nbsp;&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;</button>
+								</div>
+								<h5><small> Hot tip: Many Senators often fail to provide a category on their forms. Even if it's obvious something is a gift, if the category (also known as "item") isn't listed, or it is erroneously listed as the actual thing being declared, please press "No".</small></h5>
+								
+							</div>
+
+		    				<div id="typewhat">
+		    					<h4 class='headcount'>Entry </h4>
+		    					<h5> For this entry, what is the category (or "item") of the entry?</h5>
+								<select id="categories">
+									<option value='&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+									<option value='1 - Shareholdings'>Item 1 - Shareholdings</option>
+									<option value='2(i) - Trust beneficial interests'>Item 2(i) - Trust beneficial interests</option>
+									<option value='2(ii) - Trustee appointments'>Item 2(ii) - Trustee appointments</option>
+									<option value='3 - Real estate'>Item 3 - Real estate</option>
+									<option value='4 - Directorships'>Item 4 - Directorships</option>
+									<option value='5 - Partnerships'>Item 5 - Partnerships</option>
+									<option value='6 - Liabilities'>Item 6 - Liabilities</option>
+									<option value='7 - Bonds etc'>Item 7 - Bonds etc</option>
+									<option value='8 - Saving or investment accounts'>Item 8 - Saving or investment accounts</option>
+									<option value='9 - Other assets over $7.5k'>Item 9 - Other assets over $7.5k</option>
+									<option value='10 - Other sources of income'>Item 10 - Other sources of income</option>
+									<option value='11 - Gifts'>Item 11 - Gifts</option>
+									<option value='12 - Travel or hospitality'>Item 12 - Travel or hospitality</option>
+									<option value='13 - Membership conflicts'>Item 13 - Membership conflicts</option>
+									<option value='14 - Other conflicts'>Item 14 - Other conflicts</option>	
+								</select>
+								<br><br>
+								<button class='pull-right btn btn-default nextfor'>Next</button>
+							</div>
+
+		    				<div id="kind">
+		    					<h4 class='headcount'>Entry </h4>
+		    					<h5> Is this entry an addition to the register, or the deletion of one?</h5>
+								<div class="btn-group" role="group">
+								  <button name="kind" value="Addition" class="btn btn-sm btn-success choice">Addition</button>
+								  <button name="kind" value="Deletion" class="btn btn-sm btn-success choice">Deletion</button>
+								</div>
+								
+							</div>
+
+		    				<div id="forwho">
+		    					<h4 class='headcount'>Entry </h4>
+		    					<h5> For this entry, who is it for? <small>If it's not clear, assume it's for "Self"</small></h5>
+				    			<div class="btn-group-vertical" role="group">
+								  <button name="forwho" value="Self" class="btn btn-danger choice"> Self </button>
+								  <button name="forwho" value="Spouse" class="btn btn-danger choice"> Spouse </button>
+								  <button name="forwho" value="Self and spouse" class="btn btn-danger choice"> Self and spouse </button>
+								  <button name="forwho" value="Other" class="btn btn-danger choice"> Other dependent </button>
+								</div>
+							</div>
+
+		    				<div id="entry">
+		    					<textarea class='textarea' ></textarea><br>
+								<h5><small>Doing this means references made to people, companies, values or other entities will show up in searches. Fyeah! </small></h5>
+								<button class='btn btn-default afterentry'>Lock it in</button>
+							</div>
+		    				<div id="hardtoread">
+		    					<h4 class='headcount'>Entry </h4>
+		    					<h5>Would you describe this entry as "legible"??</h5>
+								<div class="btn-group" role="group">
+								  <button name="legible" value="No" class="btn btn-info choice">&nbsp;&nbsp;&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;</button>
+								  <button name="legible" value="Yes" class="btn btn-info choice">&nbsp;&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;</button>
+								</div>
+							</div>
+		    				<div id="entryreview">
+		    					<h4 class='headcount'>Entry </h4>
+		    					<p id="fullsum">Summary</p>
+		    					<div class="btn-group">
+		    					<button class="btn btn-primary change">Doh, go back</button><button class="btn btn-primary confirm">I nailed it</button>
+		    					</div>
+							</div>
+							<div id="end">
+								<h5>Thanks for helping out with this page. It brings us one step closer to BURN.</h5>
+								<button class="btn btn-primary send">Upload entries & continue</button>
+							</div>
+							<div class='bottom'>
+								<h5><small>Run into a problem? Try hitting the <i class="fa fa-undo" aria-hidden="true"></i> button or reload the page in your browser. Email suggestions to aphlifer@gmail.com</small></h5>
+								<br><br><br><br><br><br>
+							</div>
+						</div>
+					</div>
+				</div>
+
+	    </div>
+
+        <script src="/static/js/panzoom.js"></script>    
+        <script src="/static/js/picker.js"></script>     
+        <script src="/static/js/picker.date.js"></script>
+		<script src="/static/js/moment-with-locales.min.js"></script>
+		<script src="/static/js/jquery.mobile-events.min.js"></script>
+		<script src="/static/js/pybossa/pybossa.js"></script>
+		<script> // this script creates the options of names to search through from the below array
+		var sen45 = {"gallagherk":"Katy Gallagher","seseljaz":"Zed Seselja","paynem":"Marise Payne","dastyaris":"Sam Dastyari","sinodinosa":"Arthur Sinodinos","mcallisterj":"Jenny Mcallister","nashf":"Fiona Nash","oneilld":"Deborah O\'Neill","fierravantiwellsc":"Concetta Fierravanti-Wells","camerond":"Doug Cameron","rhiannonl":"Lee Rhiannon","williamsj":"John Williams","burstonb":"Brian Burston","leyonhjelmd":"David Leyonhjelm","mccarthym":"Malarndirri Mccarthy","scullionn":"Nigel Scullion","brandisg":"George Brandis","wattm":"Murray Watt","hansonp":"Pauline Hanson","canavanm":"Matthew Canavan","chisholma":"Anthony Chisholm","mcgrathj":"James Mcgrath","moorec":"Claire Moore","macdonaldi":"Ian Macdonald","watersl":"Larissa Waters","osullivanb":"Barry O\'Sullivan","ketterc":"Chris Ketter","robertsm":"Malcolm Roberts","birminghams":"Simon Birmingham","wongp":"Penny Wong","xenophonn":"Nick Xenophon","bernardic":"Cory Bernardi","farrelld":"Don Farrell","griffs":"Stirling Griff","rustona":"Anne Ruston","gallachera":"Alex Gallacher","fawcettd":"David Fawcett","kakoschkemoores":"Skye Kakoschke-Moore","hansonyoungs":"Sarah Hanson-Young","dayb":"Bob Day","abetze":"Eric Abetz","urquharta":"Anne Urquhart","whishwilsonp":"Peter Whish-Wilson","lambiej":"Jacqui Lambie","parrys":"Stephen Parry","polleyh":"Helen Polley","duniamj":"Jonathon Duniam","brownc":"Carol Brown","bushbyd":"David Bushby","singhl":"Lisa Singh","bilykc":"Catryna Bilyk","mckimn":"Nick Mckim","fifieldm":"Mitch Fifield","carrk":"Kim Carr","dinataler":"Richard Di Natale","mckenzieb":"Bridget Mckenzie","conroys":"Stephen Michael Conroy","ryans":"Scott Ryan","collinsj":"Jacinta Collins","patersonj":"James Paterson","marshallg":"Gavin Marshall","hinchd":"Derryn Hinch","ricej":"Janet Rice","humej":"Jane Hume","cormannm":"Mathias Cormann","liness":"Sue Lines","ludlams":"Scott Ludlam","cashm":"Michaelia Cash","sterleg":"Glenn Sterle","smithd":"Dean Smith","dodsonp":"Patrick Dodson","reynoldsl":"Linda Reynolds","backc":"Chris Back","prattl":"Louise Pratt","culletonr":"Rodney Norman Culleton","siewertr":"Rachel Siewert"}   
+
+
+
+		$( document ).ready(function(){
+			$('#loading').hide(0,function(){$('#firstup').show(0)});
+			$('#main-footer').hide(0);
+			$('.container-main').css('padding-top',"50px")
+			var sel = document.getElementById('selecting');
+			var fragment = document.createDocumentFragment();
+
+
+			
+
+		    /*
+		    Form functionality
+		    */
+
+			
+
+		    /*
+		    Panzoom
+		    */
+
+		    (function() {
+		        var $section = $('#pan-when-zoomed');
+		        $section.find('.panzoom').panzoom({
+		            $zoomIn: $section.find(".zoom-in"),
+		            $zoomOut: $section.find(".zoom-out"),
+		            $reset: $section.find(".reset"),
+		            minScale: 0.2,
+		            maxScale: 3, 
+		        });
+		    })();
+
+		    $('.datepicker').pickadate({
+		            today: '',
+		            clear: '',
+		            close: '',
+		            formatSubmit: 'yyyy/mm/dd',
+		            showMonthsShort: true,
+		            showYearsShort: true,
+		            labelMonthSelect: 'Pick a month from the dropdown',
+		            labelYearSelect: 'Pick a year from the dropdown',
+		            selectMonths: true,
+		            selectYears: true,
+		            min: new Date(2011,12,1),
+		            max: new Date(2016,11,31),
+		            onSet: function(context) {
+		                activateNext(); // look out below for this function!;
+		                newDate = moment((context.select)).format("YYYY-MM-DD");
+		            }
+		    })
+
+		    var activateNext = function() {
+		        $(".dateentry").show() //this cheeky sausage shows the date entry page after you submit
+		    };
+		    
+		    $("#categories").select2({ width: '80%' });
+			
+
+			var newDate
+
+			// This function sets up the empty entries array
+			var makeent = function(arr,num) {
+			    for (i=0;i < num; i++) {
+			        arr.push({
+			            typeup : null,
+			            typewhat : null,
+			            kind: null,
+			            forwho : null,
+			            entry : null,
+			            legible: null
+			        })
+			    }
+			    return arr
+			}
+
+
+			//First up, we have the nameup div with a choice button (A1) - it works great
+
+			$('#nameup .choice').click(function(){
+			    page[$(this).attr("name")] = $(this).attr("value");
+			    if ($(this).attr("value") == "Yes") { // if Yes it only goes one ahead to A2, the name select
+			        $(this).parent().parent().hide(0,function() {
+			            $(this).next().show(0,$(this).next().children("button").hide()); 
+			        })        
+			    } else { // if no it shoots two ahead, to the date check, A3
+			        $(this).parent().parent().hide(0,function() {
+			            $("#dateup").show(0);
+			        })
+			    }
+			});
+
+			// This is to show the Next button when choosing the name in form A2
+			$('#selecting').on("select2:opening", function(e) { 
+			   $(this).parent().children("button").show()
+			});
+
+			// this is for the Next button after entering the name of the MP/Senator on A2
+			$(".nameentry").click(function(){
+			    $(this).parent().hide(0,function() {
+			        $("#dateup").show(0)//.hide());
+			    })
+			});
+
+			// now the date check
+			$('#dateup .choice').click(function(){
+			    page[$(this).attr("name")] = $(this).attr("value");
+			    if ($(this).attr("value") == "Yes") { // if yes, go to A4
+			        $(this).parent().parent().hide(0,function() {
+			            $("#datewhat").show(0,$("#datewhat").children().children("button").hide());
+			        })        
+			    } else { // otherwise, jump to howmany!
+			        $(this).parent().parent().hide(0,function() {
+			            $("#howmany").show(0);
+			        })
+			    }
+			});
+
+			// this is for the Next button after entering the date of the form
+			$(".dateentry").click(function(){
+			    page['datewhat'] = newDate;
+			    $("#datewhat").hide(0,function() {
+			        $("#howmany").show(0);
+			    })
+			});        
+
+			//this is for up and down for the counter
+			$('#btnIncrease').on('click',function(e) { 
+			   $('#howmanyinput').val(function(i, val) { return +val+1 });
+			});
+
+			$('#btnDecrease').on('click',function(e) { 
+			   $('#howmanyinput').val(function(i, val) { if (val === "0") { return 0 } else { return +val-1 } });
+			});
+
+
+			// this is for the Next button after entering the number of entries
+			$(".entryentry").click(function(){
+			    page['entries'] = +$("#howmanyinput").val();
+			    $(this).parent().toggle(0,function() {
+			        $(this).next().toggle(0);
+			    });
+			    var nom = sen45[page['namewhat']];
+			    var dot = page['dateup']
+			    if (page['dateup']==='Yes') {
+			        dot = page['datewhat']
+			    };
+			    $('#summary').empty().append("That's the basic information sorted. Push on if it's correct!<ul><li>Name: "+nom+'</li><li>Date: '+dot+'</li><li>Entries: '+page['entries'])
+			});    
+
+			// This is to send you back to the start of the form
+			$('.tostart').click(function(){
+			    $('#nameup').siblings().hide(0,$('.bottom').show());
+			    $('#nameup').show();
+			    $('#selecting').val('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;').trigger('change');
+			    $('.datepicker').val('').trigger('change');  
+			})
+
+			// This is for the next button at the end of the first phase
+			$('.phase').click(function(){
+			    if (page['entries'] === 0) { 
+			        $('#holder').hide(0,function() {
+			            $("#end").show(0)//.hide());
+			        })
+			    } else {$('#holder').hide(0,function() {
+			        $("#typeup").show(0)//.hide());
+			        console.log($('.headcount').html());
+			        $('.headcount').html("Entry "+(counter+1)).trigger('change');
+			        //$('#holder').siblings().each(function(){$(this).html = '<h3>Entry '+counter+'</h3>' + this});
+			    })}
+			    entries = makeent(entries,page['entries']);
+			    $('.textarea').val("Now the hard bit. Can you please transcribe entry " + (counter + 1) +", making sure you nail the spelling of names, companies and entities.");
+			});
+
+			// This is for clicking the button about the category
+			$('#typeup .choice').click(function(){
+			    if ($(this).attr("value") == "Yes") { // if Yes it only goes one ahead to A2, the name select
+			        entries[counter][$(this).attr("name")] = $(this).attr("value");
+			        $("#typeup").hide(0,function() {
+			            $('#typewhat').toggle(0,$('#typewhat').children("button").hide());
+			            $("#categories").val('').trigger('change'); 
+			        })        
+			    } else { // if no it shoots two ahead, to the for who, A3
+			        $("#typeup").toggle(0,function(){$("#kind").toggle(0)});
+			        entries[counter][$(this).attr("name")] = $(this).attr("value");
+			    }
+			});
+
+			// This shows the Next button once the cateogry is selected
+			$('#categories').on("select2:opening", function(e) { 
+			   $(this).parent().children("button").show()
+			});
+
+
+			// This is for the Next button on the category entry form
+			$('.nextfor').click(function(){
+			    entries[counter]['typewhat'] = $("#categories").val();
+			    $(this).parent().hide(0,function() {
+			        $("#kind").show(0)//.hide());
+			    })
+			});
+
+			// This is for clicking the button about who the entry is for
+			$('#kind .choice').click(function(){
+			    $("#kind").toggle(0,function(){$("#forwho").toggle(0)});
+			    entries[counter][$(this).attr("name")] = $(this).attr("value");
+			});
+
+			// This is for clicking the button about who the entry is for
+			$('#forwho .choice').click(function(){
+			    $("#forwho").toggle(0,function(){$("#entry").toggle(0,$('.afterentry').hide(0))});
+			    entries[counter][$(this).attr("name")] = $(this).attr("value");
+			});
+
+
+			// This is for after the entry page
+			$('.afterentry').click(function(){
+			    $("#entry").toggle(0,function(){$("#hardtoread").toggle(0)});
+			    var clear = function(html) {
+			        return $( $.parseHTML(html) ).text();
+			    }
+			    entries[counter]['entry'] = clear($('.textarea').val());
+			});
+
+			// This is for showing the Next button
+			$('.textarea').on('focus',function(){
+				if ($('textarea').val()==="Now the hard bit. Can you please transcribe entry " + (counter + 1) +", making sure you nail the spelling of names, companies and entities.") { $('textarea').val(""); };
+			    $(".afterentry").show(0);
+			});
+
+			// This is for clicking the button about whether it was hard to read
+			$('#hardtoread .choice').click(function(){
+			    entries[counter][$(this).attr("name")] = $(this).attr("value");
+			    $("#hardtoread").toggle(0,function(){$("#entryreview").toggle(0)});
+			    var type = entries[counter]['typeup']
+			    if ( entries[counter]['typeup'] === "Yes") { type = entries[counter]['typewhat'] }
+			    $('#fullsum').empty().append("To confirm the information for this entry...<ul><li>Category: "+type+"</li><li>Addition/Deletion: "+entries[counter]['kind']+"</li><li>For: "+entries[counter]['forwho']+"</li><li>Legible? "+entries[counter]['legible']+"</li><li>Entry:<br>"+entries[counter]['entry']+"</li>");
+			});
+
+			$('.confirm').click(function(){
+			    counter = counter+1
+			    $('.headcount').html("Entry "+(counter+1)).trigger('change');
+			    if (counter === page['entries']) { 
+			        $("#entryreview").hide(0,function() {
+			            $('#end').toggle(0)
+			        }); 
+			    } else {
+			        $("#entryreview").hide(0,function() {
+			            $('#typeup').toggle(0);
+			            $("#categories").val('').trigger('change');
+			            $('.textarea').val("Now the hard bit. Can you please transcribe entry " + (counter + 1) + ", making sure you nail the spelling of names, companies and entities.")
+			        }); 
+			    }
+			})
+
+			$('.change').click(function(){
+			    $('#entryreview').hide(0,function() {
+			        $('#typeup').show(0);
+			        $("#categories").val('').trigger('change');
+			        $('textarea').val(entries[counter]['entry']).trigger('change');
+			    })
+			})
+
+
+
+			pybossa.taskLoaded(function(task, deferred) {
+						    if ( !$.isEmptyObject(task) ) {
+						        var img = $('<img />');
+						        img.load(function() {
+						            // continue as soon as the image is loaded
+						            deferred.resolve(task);
+						        });
+						        img.attr('src', task.info.url_b);
+						        img.addClass('img-responsive');
+						        task.info.image = img;
+						    } else {
+						        deferred.resolve(task);
+						    }
+						});
+
+			pybossa.presentTask(function(task, deferred) {
+			    if ( !$.isEmptyObject(task) ) {
+    				// this is fpr the basic info about the page. Whether it has a name, what the name is, 
+					// whether it has a date, what the date is, and how many entries on are the form
+			    	page = {
+					    nameup : null,
+					    namewhat : task.info.title.split("_")[0],
+					    dateup : null,
+					    datewhat : null,
+					    entries: null
+					};
+					entries = []
+					counter = 0
+			        // load image from flickr
+			        $('#noma').html("If it wasn't already obvious, this page belongs to <strong>"+sen45[task.info.title.split("_")[0]]+"</strong>.");
+	    			$('.panzoom').html('').append(task.info.image);
+	    			$('.panzoom').panzoom("reset");
+				    $('#notes').show(0,function(){$('#nameup').show(0,function(){$('#nameup').siblings().hide(0)})});
+					$('#selecting').val('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;').trigger('change');
+					$('#howmanyinput').val(0).trigger('change');
+			    	$('.datepicker').val('').trigger('change');  
+				    $('.bottom').show();
+			        $('.send').off('click').on('click', function(evt) {
+			            var answer = [page,entries];
+			            console.log(task.id,answer)
+			            pybossa.saveTask(task.id, answer).done(function() {
+			            	deferred.resolve();
+			            });
+
+			    })        
+			    } else {
+			        $("#end").html("<h2>Yahoo! That was the last page you had left to do. Thanks for being part of the BURN.</h2>")
+			    }
+			});
+			pybossa.run('coalitionsenators-initial');
+		});
+	  </script>
