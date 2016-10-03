@@ -4,37 +4,38 @@
 
     	<div class="container">
 
-	    		<div class="col-xs-12 col-md-8">
-		    		<section id="pan-when-zoomed">
-				      	<div id="img_container">
+    		<div class="col-xs-12 col-md-8">
+	    		<section id="pan-when-zoomed">
+			      	<div id="img_container">
 				      	<div class="parent" style="overflow: hidden; position: relative;">
 							<div class="panzoom" style="transform: matrix(1, 0, 0, 1, 0, 0); transform-origin: 50% 50% 0px; cursor: move; transition: none;">
 								<img src="/static/img/loading.gif">
 			          		</div>
-			          		<div role="group" class="btn-group">
-						        <button type="button" class="btn btn-transparent zoom-in"><i class="fa fa-plus" aria-hidden="true"></i></button>
-						        <button type="button" class="btn btn-transparent zoom-out"><i class="fa fa-minus" aria-hidden="true"></i></button>
-						        <button type="button" class="btn btn-transparent reset"><i class="fa fa-undo" aria-hidden="true"></i></button>
-					      	</div>
-			          		</div>
-		        		</div>
-				    </section>
-	    		</div>
+		          		</div>
+	        		</div>
+          			<div role="group" class="btn-group">
+				        <button type="button" class="btn btn-link zoom-in"><i class="fa fa-plus" aria-hidden="true"></i></button>
+				        <button type="button" class="btn btn-link zoom-out"><i class="fa fa-minus" aria-hidden="true"></i></button>
+				        <button type="button" class="btn btn-link reset"><i class="fa fa-undo" aria-hidden="true"></i></button>
+			      	</div>
+			    </section>
+    		</div>
 
-	    		<div class="col-xs-12 col-md-4 form">
-	    			<div id="wrapper">
-	    				<div id="loading">
-	    					<h5>Loading first task...</h5>
-	    				</div>
-	    				<div id="firstup" class="alert alert-danger">
-						  	<button class="close" data-dismiss="alert" aria-label="close">&times;</button>
-	    					<h3>Welcome to the BURN</h3>
-			    			<h5>The document in the box is one page of the Federal Register of Interests for Senators in the 44th Parliament (that's 2013 to 2016).<br><br>Move the page around, zoom in or press <i class="fa fa-undo" aria-hidden="true"></i> to reset changes if the scrolling gets wacky. <br><br>When you are ready to help bring this bad boy of a register into the 21st century, dismiss this message and get on with it. </h5>
-							  
-						</div>
-	    				<div id='notes' style="display: none">
-							  <!-- Success and Error Messages for the user -->
-							  <div class="span6 offset2" style="height:50px">
+    		<div class="col-xs-12 col-md-4 form">
+    			<div id="wrapper">
+    				<div id="loading">
+    					<h5>Loading first task...</h5>
+    				</div>
+    				<div id="firstup" class="alert alert-danger">
+					  	<button class="close" data-dismiss="alert" aria-label="close">&times;</button>
+    					<h3>Welcome to the BURN</h3>
+		    			<h5>The document in the box is one page of the Federal Register of Interests for Senators in the 44th Parliament (that's 2013 to 2016).<br><br>Move the page around, zoom in or press <i class="fa fa-undo" aria-hidden="true"></i> to reset changes if the scrolling gets wacky. <br><br>When you are ready to help bring this bad boy of a register into the 21st century, dismiss this message and get on with it. </h5>
+						  
+					</div>
+    				<div id='notes' style="display: none">
+						 <!-- Success and Error Messages for the user -->
+						 
+						 <div class="span6 offset2" style="height:50px">
 
 
 
@@ -167,11 +168,10 @@
 							</div>
 							<div class='bottom'>
 								<h5><small>Run into a problem? Try hitting the <i class="fa fa-undo" aria-hidden="true"></i> button or reload the page in your browser. Email suggestions to aphlifer@gmail.com</small></h5>
-								<br><br><br><br><br><br>
 							</div>
 						</div>
-					</div>
 				</div>
+			</div>
 
 	    </div>
 
@@ -213,7 +213,7 @@
 		            $zoomOut: $section.find(".zoom-out"),
 		            $reset: $section.find(".reset"),
 		            minScale: 0.2,
-		            maxScale: 3, 
+		            maxScale: 5, 
 		        });
 		    })();
 
