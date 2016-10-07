@@ -27,7 +27,7 @@
     			<div id="firstup" class="alert alert-danger">
 				  	<button class="close" data-dismiss="alert" aria-label="close">&times;</button>
 					<h3>Welcome to the BURN</h3>
-	    			<h5>The document in the box is one page of the Federal Register of Interests for Senators in the current Parliament.<br><br>Move the page around, zoom in or press <i class="fa fa-undo" aria-hidden="true"></i> to reset changes if the scrolling gets wacky. <br><br>When you are ready to help bring this bad boy of a register into the 21st century, dismiss this message with the little &times; above and get on with it. </h5>
+	    			<h5>The document in the box is one page of the Federal Register of Interests for Senators in the current Parliament.<br><br>Move the page around, zoom in or press <i class="fa fa-undo" aria-hidden="true"></i> to reset changes if the scrolling gets wacky. <br><br>When you are ready to help bring this bad boy of a register into the 21st century, dismiss this message with the little grey &times; above and get on with it. </h5>
 				</div>
     			
     			<div id="qs" >
@@ -101,12 +101,14 @@
 
 				<div id="perm">
 					<button id="prob" class="btn btn-sm btn-danger">Can't read page</button> <button id="save" class="btn btn-sm btn-success">FINISHED!</button>
-					<p><span id="i18n_working_task">You are working on page</span> <span id="task-id" class="label label-warning">#</span> of the project</p>
-   				    <p><span id="i18n_tasks_completed">You have completed</span> <span id="done" class="label label-info"></span> <span id="i18n_tasks_from">out of </span>
-					<span id="total" class="label label-info"></span> pages</p>
-			        <div class="progress progress-striped">
-			            <div id="progress" rel="tooltip" title="#" class="progress-bar" style="width: 0%;"  role="progressbar">Progress</div>
-			        	</div>
+					<div id="foot">
+						<p><span id="i18n_working_task">Currently on page</span> <span id="task-id" class="label">#</span></p>
+	   				    <p><span id="i18n_tasks_completed">You have completed</span> <span id="done" class="label label-default"></span> <span id="i18n_tasks_from">out of </span>
+						<span id="total" class="label label-default"></span> pages</p>
+				        <div class="progress progress-striped">
+				            <div id="progress" rel="tooltip" title="#" class="progress-bar" style="width: 0%;"  role="progressbar">Progress</div>
+				        	</div>
+						</div>
 					</div>
 				</div>
 
@@ -287,15 +289,15 @@
 				    		</tr>");
 	    			$('.panzoom').html('').append(task.info.image);
 	    			$('.panzoom').panzoom("reset");
-
+	    			$('#foot').slideDown(500);
 	    			//for save
 				    $('#save').off('click').on('click', function(evt) {
 			            var answer = [page,entries];
 			            pybossa.saveTask(task.id, answer).done(function() {
 			            	deferred.resolve();
 			            });
-			            $('qs').hide();
-
+			            $('#qs').hide();
+			            $('#foot').slideUp(500)
 			        });
 
 			        //for illegible button
@@ -305,7 +307,8 @@
 			            pybossa.saveTask(task.id, answer).done(function() {
 			            	deferred.resolve();
 			            });
-			            $('qs').hide();
+			            $('#qs').hide()
+			            $('#foot').slideUp(500)
 					})
 			    
 			    } else {
