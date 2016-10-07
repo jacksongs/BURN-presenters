@@ -21,13 +21,13 @@
     		<div class="col-xs-12 col-md-4 form">
 
     		    <div id="loading">
-    				<h5>Loading first task...</h5>
+    				<h5>Loading first page...</h5>
     			</div>
     			
     			<div id="firstup" class="alert alert-danger">
 				  	<button class="close" data-dismiss="alert" aria-label="close">&times;</button>
 					<h3>Welcome to the BURN</h3>
-	    			<h5>The document in the box is one page of the Federal Register of Interests for Senators in the current Parliament.<br><br>Move the page around, zoom in or press <i class="fa fa-undo" aria-hidden="true"></i> to reset changes if the scrolling gets wacky. <br><br>When you are ready to help bring this bad boy of a register into the 21st century, dismiss this message and get on with it. </h5>
+	    			<h5>The document in the box is one page of the Federal Register of Interests for Senators in the current Parliament.<br><br>Move the page around, zoom in or press <i class="fa fa-undo" aria-hidden="true"></i> to reset changes if the scrolling gets wacky. <br><br>When you are ready to help bring this bad boy of a register into the 21st century, dismiss this message with the little &times; above and get on with it. </h5>
 				</div>
     			
     			<div id="qs" >
@@ -53,24 +53,24 @@
 						<p>What category or item is the entry?</p>
 						<div style="font-size: 0">
 							<div class="btn-group-vertical btn-group" role="group">
-								<button class="btn btn-sm btn-primary" value='Shareholding'><small>1 Shareholding</small></button>
-								<button class="btn btn-xs btn-primary" value='Trust beneficiary'>2i Trust <br>beneficiary</button>
-								<button class="btn btn-sm btn-primary" value='Trustee'>2ii Trustee</button>
-								<button class="btn btn-sm btn-primary" value='Real estate'>3 Real estate</button>
-								<button class="btn btn- btn-primary" value='Directorship'><small>4 Directorship</small></button>
-								<button class="btn btn-sm btn-primary" value='Partnership'>5 Partnership</button>
-								<button class="btn btn-sm btn-primary" value='Liability'>6 Liability</button>
-								<button class="btn btn-xs btn-primary" value='Bonds/debenture'>7 Bond or <br>debenture</button>
+								<button class="btn btn-xs btn-primary" value='Shareholding'><small>1 Shareholding</small></button>
+								<button class="btn btn-xs btn-primary" value='Trust beneficiary'><small>2i Trust <br>beneficiary</small></button>
+								<button class="btn btn-xs btn-primary" value='Trustee'><small>2ii Trustee</small></button>
+								<button class="btn btn-xs btn-primary" value='Real estate'><small>3 Real estate</small></button>
+								<button class="btn btn-xs btn-primary" value='Directorship'><small>4 Directorship</small></button>
+								<button class="btn btn-xs btn-primary" value='Partnership'><small>5 Partnership</small></button>
+								<button class="btn btn-xs btn-primary" value='Liability'><small>6 Liability</small></button>
+								<button class="btn btn-xs btn-primary" value='Bonds/debenture'><small>7 Bond or <br>debenture</small></button>
 							</div>
 							<div class="btn-group-vertical btn-group" role="group">
-								<button class="btn btn-xs btn-primary" value='Savings/other accounts'>8 Savings/other<br> account</button>
-								<button class="btn btn-sm btn-primary" value='Other asset'>9 Other asset</button>
-								<button class="btn btn-sm btn-primary" value='Other income'><small>10 Other income</small></button>
-								<button class="btn btn-sm btn-primary" value='Gift'>11 Gift</button>
-								<button class="btn btn-xs btn-primary" value='Travel or hospitality'>12 Travel or <br>hospitality</button>
-								<button class="btn btn-sm btn-primary" value='Membership'><small>13 Membership</small></button>
+								<button class="btn btn-xs btn-primary" value='Savings/other accounts'><small>8 Savings/other<br> account</small></button>
+								<button class="btn btn-xs btn-primary" value='Other asset'><small>9 Other asset</small></button>
+								<button class="btn btn-xs btn-primary" value='Other income'><small>10 Other income</small></button>
+								<button class="btn btn-xs btn-primary" value='Gift'><small>11 Gift</small></button>
+								<button class="btn btn-xs btn-primary" value='Travel or hospitality'><small>12 Travel or <br>hospitality</small></button>
+								<button class="btn btn-xs btn-primary" value='Membership'><small>13 Membership</small></button>
 								<button class="btn btn-xs btn-primary" value='Other conflict'><small>14 Other conflict</small></button>
-								<button class="btn btn-sm btn-primary" value='Not listed'><strong>Not listed</strong></button>	
+								<button class="btn btn-primary" value='Not listed'><strong>Not listed</strong></button>	
 							</div>
 						</div>
 					</div>
@@ -88,7 +88,6 @@
 					<thead>
 						<th id="#first"></th>
 						<th>Entries</th>
-						<th></th>
 						<th colspan="2"><button id="entry" class='btn btn-default pull-right'>Add entry</button></th>
 											
 					</thead>
@@ -101,9 +100,15 @@
 				</table>
 
 				<div id="perm">
-					<button id="prob" class="btn btn-sm btn-danger pull-left">Can't read page</button> <button id="save" class="btn btn-sm btn-success pull-right">FINISHED!</button>
+					<button id="prob" class="btn btn-sm btn-danger">Can't read page</button> <button id="save" class="btn btn-sm btn-success">FINISHED!</button>
+					<p><span id="i18n_working_task">You are working on page</span> <span id="task-id" class="label label-warning">#</span> of the project</p>
+   				    <p><span id="i18n_tasks_completed">You have completed</span> <span id="done" class="label label-info"></span> <span id="i18n_tasks_from">out of </span>
+					<span id="total" class="label label-info"></span> pages</p>
+			        <div class="progress progress-striped">
+			            <div id="progress" rel="tooltip" title="#" class="progress-bar" style="width: 0%;"  role="progressbar">Progress</div>
+			        	</div>
+					</div>
 				</div>
-			</div>
 
 	    </div>
 
@@ -144,7 +149,7 @@
 			//new entry button
 			$('#entry').click(function() { 
 				$('#qs').slideDown(200,function(){
-					$('#ad').show(0,function(){
+					$('#ad').fadeIn(0,function(){
 						$('#ad').siblings().hide()
 					})
 				});
@@ -153,31 +158,31 @@
 
 			//for whether it's an addition or deletion
 			$('#ad > div > button').click(function() { 
-				$('#ad').hide(200,function() { 
-					$('#who').slideDown(200)
+				$('#ad').fadeOut(200,function() { 
+					$('#who').fadeIn(200)
 				});
 				e['ad'] = $(this).attr("value");
 			});
 
 			//for who it is for
 			$('#who > div > button').click(function() { 
-				$('#who').hide(200,function() { 
-					$('#item').slideDown(200)
+				$('#who').fadeOut(200,function() { 
+					$('#item').fadeIn(200)
 				});
 				e['who'] = $(this).attr("value");
 			});
 
 			//for what category it is
 			$('#item > div > div > button').click(function() { 
-				$('#item').hide(200,function() { 
-					$('#text').slideDown(200)
+				$('#item').fadeOut(200,function() { 
+					$('#text').fadeIn(200)
 				});
 				e['item'] = $(this).attr("value");
 			});
 
 			//for submit button
 			$('#text > button').click(function(){
-				$('#text').hide(0,function(){
+				$('#text').fadeOut(0,function(){
 					togqs();
 				});
 				var clear = function(html) {
@@ -199,7 +204,7 @@
 				e['item'] = copied['item'];
 				e['text'] = copied['text'];
 				$('.textarea').val(copied['text']);
-				$('#text').show(0,function(){togqs()})
+				$('#qs').slideDown(200,function(){$('#text').siblings().hide(0,function(){$('#text').fadeIn(200)})});
 			})
 
 			//for delete button
@@ -220,22 +225,31 @@
 				var table = ''
 				for (entry in entries) {
 					table = table + 			`<tr> \
-				        <td rowspan='2'>&nbsp;&nbsp;&nbsp;</td> \
-				        <td colspan='4'><button value=${entry} class='close' data-dismiss='alert' aria-label='close'>&times;</button>${entries[entry]['text']} \
+				        <td rowspan='2'>&#x25cf;</td> \
+				        <td colspan='3' style="text-align: left;"><button value=${entry} class='close' data-dismiss='alert' aria-label='close'>&nbsp;&nbsp;&times;&nbsp;&nbsp;</button><button value=${entry} class='btn btn-xs btn-default copy pull-right'>Copy</button>${entries[entry]['text']} \
 				        </td> \
 				    </tr> \
 				    <tr> \
-				      	<td><small>${entries[entry]['ad']}</small></td> \
+				    	<td><small>${entries[entry]['ad']}</small></td> \
 				        <td><small>${entries[entry]['item']}</small></td> \
 					    <td><small>${entries[entry]['who']}</small></td> \
-					    <td><button value=${entry} class='btn btn-xs btn-default copy'>Copy</button> \
+					     \
 					</tr>`
 				}
 				$('tbody').html(table);
 
 			}
 
-
+			function loadUserProgress() {
+			    pybossa.userProgress('coalitionsenators-initial').done(function(data){
+			        var pct = Math.round((data.done*100)/data.total);
+			        $("#progress").css("width", pct.toString() +"%");
+			        $("#progress").attr("title", pct.toString() + "% completed!");
+			        $("#progress").tooltip({'placement': 'left'}); 
+			        $("#total").text(data.total);
+			        $("#done").text(data.done);
+			    });
+			}
 
 			pybossa.taskLoaded(function(task, deferred) {
 						    if ( !$.isEmptyObject(task) ) {
@@ -254,6 +268,8 @@
 
 			pybossa.presentTask(function(task, deferred) {
 			    if ( !$.isEmptyObject(task) ) {
+    				loadUserProgress();
+    				$('#task-id').html(task.id);
     				// this is fpr the basic info about the page. Whether it has a name, what the name is, 
 					// whether it has a date, what the date is, and how many entries on are the form
 			    	page = {
