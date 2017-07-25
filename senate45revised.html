@@ -27,7 +27,7 @@
     			<div id="firstup" class="alert alert-danger">
 				  	<button class="close" data-dismiss="alert" aria-label="close">&times;</button>
 					<h3>Welcome to the BURN</h3>
-	    			<h5>The document in the box is one page of the Federal Register of Interests for Senators in the current Parliament.<br><br>Move the page around, zoom in or press <i class="fa fa-undo" aria-hidden="true"></i> to reset changes if the scrolling gets wacky. <br><br>When you are ready to help bring this bad boy of a register into the 21st century, dismiss this message with the little grey &times; above and get on with it. </h5>
+	    			<h5>The document in the box is one page of the Federal Register of Interests for Senators in the current Parliament.<br><br>Move the page around, zoom in or press <i class="fa fa-undo" aria-hidden="true"></i> to reset changes if the scrolling gets wacky. <br><br><strong>Ready?</strong> Dismiss this message with the little grey &times; above and get on with it. </h5>
 				</div>
     			
     			<div id="qs" >
@@ -102,7 +102,7 @@
 				<div id="perm">
 					<button id="prob" class="btn btn-sm btn-danger">Can't read page</button> <button id="save" class="btn btn-sm btn-success">FINISHED!</button>
 					<div id="foot">
-						<p><span id="i18n_working_task">Currently on page</span> <span id="task-id" class="label">#</span></p>
+	   				    <p><strong>Congratulations and thanks.</strong></p>
 	   				    <p><span id="i18n_tasks_completed">You have completed</span> <span id="done" class="label label-default"></span> <span id="i18n_tasks_from">out of </span>
 						<span id="total" class="label label-default"></span> pages</p>
 				        <div class="progress progress-striped">
@@ -110,6 +110,10 @@
 				        	</div>
 						</div>
 					</div>
+				</div>
+
+				<div id="finished">
+   				    <p><span id="i18n_tasks_completed">You have completed all your tasks in this project. Spot anything interesting? <a href="http://team.burntheregister.com">Tell the community</a>.</span></p>
 				</div>
 
 	    </div>
@@ -121,6 +125,9 @@
 		<script src="/static/js/jquery.mobile-events.min.js"></script>
 		<script src="/static/js/pybossa/pybossa.js"></script>
 		<script> // this script creates the options of names to search through from the below array
+
+		var project = 'xenophonn45' // CHANGE THIS FOR EACH PERSON
+		
 		var sen45 = {"gallagherk":"Katy Gallagher","seseljaz":"Zed Seselja","paynem":"Marise Payne","dastyaris":"Sam Dastyari","sinodinosa":"Arthur Sinodinos","mcallisterj":"Jenny Mcallister","nashf":"Fiona Nash","oneilld":"Deborah O\'Neill","fierravantiwellsc":"Concetta Fierravanti-Wells","camerond":"Doug Cameron","rhiannonl":"Lee Rhiannon","williamsj":"John Williams","burstonb":"Brian Burston","leyonhjelmd":"David Leyonhjelm","mccarthym":"Malarndirri Mccarthy","scullionn":"Nigel Scullion","brandisg":"George Brandis","wattm":"Murray Watt","hansonp":"Pauline Hanson","canavanm":"Matthew Canavan","chisholma":"Anthony Chisholm","mcgrathj":"James Mcgrath","moorec":"Claire Moore","macdonaldi":"Ian Macdonald","watersl":"Larissa Waters","osullivanb":"Barry O\'Sullivan","ketterc":"Chris Ketter","robertsm":"Malcolm Roberts","birminghams":"Simon Birmingham","wongp":"Penny Wong","xenophonn":"Nick Xenophon","bernardic":"Cory Bernardi","farrelld":"Don Farrell","griffs":"Stirling Griff","rustona":"Anne Ruston","gallachera":"Alex Gallacher","fawcettd":"David Fawcett","kakoschkemoores":"Skye Kakoschke-Moore","hansonyoungs":"Sarah Hanson-Young","dayb":"Bob Day","abetze":"Eric Abetz","urquharta":"Anne Urquhart","whishwilsonp":"Peter Whish-Wilson","lambiej":"Jacqui Lambie","parrys":"Stephen Parry","polleyh":"Helen Polley","duniamj":"Jonathon Duniam","brownc":"Carol Brown","bushbyd":"David Bushby","singhl":"Lisa Singh","bilykc":"Catryna Bilyk","mckimn":"Nick Mckim","fifieldm":"Mitch Fifield","carrk":"Kim Carr","dinataler":"Richard Di Natale","mckenzieb":"Bridget Mckenzie","conroys":"Stephen Michael Conroy","ryans":"Scott Ryan","collinsj":"Jacinta Collins","patersonj":"James Paterson","marshallg":"Gavin Marshall","hinchd":"Derryn Hinch","ricej":"Janet Rice","humej":"Jane Hume","cormannm":"Mathias Cormann","liness":"Sue Lines","ludlams":"Scott Ludlam","cashm":"Michaelia Cash","sterleg":"Glenn Sterle","smithd":"Dean Smith","dodsonp":"Patrick Dodson","reynoldsl":"Linda Reynolds","backc":"Chris Back","prattl":"Louise Pratt","culletonr":"Rodney Norman Culleton","siewertr":"Rachel Siewert"}   
 
 		var page = {}
@@ -147,6 +154,7 @@
 			//initial state
 			$('#qs').hide();
 			$('#qs').children().hide();
+			$('#finished').hide();
 
 			//new entry button
 			$('#entry').click(function() { 
@@ -243,7 +251,7 @@
 			}
 
 			function loadUserProgress() {
-			    pybossa.userProgress('coalitionsenators-initial').done(function(data){
+			    pybossa.userProgress(project).done(function(data){
 			        var pct = Math.round((data.done*100)/data.total);
 			        $("#progress").css("width", pct.toString() +"%");
 			        $("#progress").attr("title", pct.toString() + "% completed!");
@@ -285,7 +293,7 @@
 			        $('#loading').hide(0);
 			        $('tbody').html("<tr>\
 					    	<td></td>\
-				    		<td colspan='3'>You don't have any entries here! (yet...?) If there are no entries listed on the page, hit that green button below.<br><br>And if it wasn't already obvious, this page belongs to <strong>"+sen45[task.info.title.split("_")[0]]+"</strong>.</td>\
+				    		<td colspan='3'>You don't have any entries here! (yet...?) If there are no entries listed on the page, hit that green button below.</td>\
 				    		</tr>");
 	    			$('.panzoom').html('').append(task.info.image);
 	    			$('.panzoom').panzoom("reset");
@@ -295,9 +303,17 @@
 			            var answer = [page,entries];
 			            pybossa.saveTask(task.id, answer).done(function() {
 			            	deferred.resolve();
+			            	pybossa.userProgress(project).done(function(data){
+						        if (data.total == data.done) {
+						        	$('#finished').fadeIn(1000);
+						        	$('#entrylist').hide();
+						        	$('#perm').hide();
+						    	};
+						    });
 			            });
 			            $('#qs').hide();
 			            $('#foot').slideUp(500)
+
 			        });
 
 			        //for illegible button
@@ -306,6 +322,13 @@
 						var answer = [page,entries];
 			            pybossa.saveTask(task.id, answer).done(function() {
 			            	deferred.resolve();
+			            	pybossa.userProgress(project).done(function(data){
+						        if (data.total == data.done) {
+						        	$('#finished').fadeIn(1000);
+						        	$('#entrylist').hide();
+						        	$('#perm').hide();
+						    	};
+						    });
 			            });
 			            $('#qs').hide()
 			            $('#foot').slideUp(500)
@@ -315,6 +338,6 @@
 			        $("#end").html("<h2>Yahoo! That was the last page you had left to do. Thanks for being part of the BURN.</h2>")
 			    }
 			});
-			pybossa.run('coalitionsenators-initial');
+			pybossa.run(project);
 		});
 	  </script>
