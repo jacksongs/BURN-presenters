@@ -27,7 +27,7 @@
     			<div id="firstup" class="alert alert-danger">
 				  	<button class="close" data-dismiss="alert" aria-label="close">&times;</button>
 					<h3>Welcome to the BURN</h3>
-	    			<h5>The document in the box is one page of the Federal Register of Interests for Senators in the current Parliament.<br><br>Move the page around, zoom in or press <i class="fa fa-undo" aria-hidden="true"></i> to reset changes if the scrolling gets wacky. <br><br><strong>Ready?</strong> Dismiss this message with the little grey &times; above and get on with it. </h5>
+	    			<h5>The document in the box is one page of the Federal Register of Interests.<br><br>Move the page around, zoom in or press <i class="fa fa-undo" aria-hidden="true"></i> to reset changes if the scrolling gets wacky. <br><br><strong>Ready?</strong> Dismiss this message with the little grey &times; above and get on with it. </h5>
 				</div>
     			
     			<div id="qs" >
@@ -75,8 +75,8 @@
 						</div>
 					</div>
 
-					<div id="text">
-						<textarea class='textarea' style="width:80%;resize:none;"></textarea>
+					<div id="text">                
+                      <textarea class='textarea' style="width:80%;resize:none;">Remember: one entry per 'thing', and if a record has supplementary information add it after a single space.</textarea>
 						<button class='btn btn-default'>Create entry</button>
 					</div>
 				</div>
@@ -88,7 +88,7 @@
 					<thead>
 						<th id="#first"></th>
 						<th>Entries</th>
-						<th colspan="2"><button id="entry" class='btn btn-default pull-right'>Add entry</button></th>
+						<th colspan="2"><button id="entry" class='btn btn-default pull-right'>Add</button></th>
 											
 					</thead>
 				    <tbody>
@@ -126,7 +126,7 @@
 		<script src="/static/js/pybossa/pybossa.js"></script>
 		<script> // this script creates the options of names to search through from the below array
 
-		var project = 'changethishere' // CHANGE THIS FOR EACH PERSON
+		var project = 'honmalcolmturnbullmp45' // CHANGE THIS FOR EACH PERSON
 		
 		var page = {}
 		var entries = []
@@ -187,7 +187,12 @@
 				});
 				e['item'] = $(this).attr("value");
 			});
-
+          
+            //to clear text
+          	
+            $('.textarea').click(function(){
+              $(this).val('')});
+            
 			//for submit button
 			$('#text > button').click(function(){
 				$('#text').fadeOut(0,function(){
@@ -232,17 +237,7 @@
 			var lister = function() {
 				var table = ''
 				for (entry in entries) {
-					table = table + 			`<tr> \
-				        <td rowspan='2'>&#x25cf;</td> \
-				        <td colspan='3' style="text-align: left;"><button value=${entry} class='close' data-dismiss='alert' aria-label='close'>&nbsp;&nbsp;&times;&nbsp;&nbsp;</button><button value=${entry} class='btn btn-xs btn-default copy pull-right'>Copy</button>${entries[entry]['text']} \
-				        </td> \
-				    </tr> \
-				    <tr> \
-				    	<td><small>${entries[entry]['ad']}</small></td> \
-				        <td><small>${entries[entry]['item']}</small></td> \
-					    <td><small>${entries[entry]['who']}</small></td> \
-					     \
-					</tr>`
+					table = table + 			`<tr> 				        <td rowspan='2'>&#x25cf;</td> 				        <td colspan='3' style="text-align: left;"><button value=${entry} class='close' data-dismiss='alert' aria-label='close'>&nbsp;&nbsp;&times;&nbsp;&nbsp;</button><button value=${entry} class='btn btn-xs btn-default copy pull-right'>Copy</button>${entries[entry]['text']} 				        </td> 				    </tr> 				    <tr> 				    	<td><small>${entries[entry]['ad']}</small></td> 				        <td><small>${entries[entry]['item']}</small></td> 					    <td><small>${entries[entry]['who']}</small></td> 					     					</tr>`
 				}
 				$('tbody').html(table);
 
@@ -289,10 +284,7 @@
 					entries = [];
 			        // load image from flickr
 			        $('#loading').hide(0);
-			        $('tbody').html("<tr>\
-					    	<td></td>\
-				    		<td colspan='3'>You don't have any entries here! (yet...?) If there are no entries listed on the page, hit that green button below.</td>\
-				    		</tr>");
+			        $('tbody').html("<tr>					    	<td></td>				    		<td colspan='3'>You don't have any entries here! (yet...?) If there are no entries listed on the page, hit that green button below.</td>				    		</tr>");
 	    			$('.panzoom').html('').append(task.info.image);
 	    			$('.panzoom').panzoom("reset");
 	    			$('#foot').slideDown(500);
@@ -339,3 +331,4 @@
 			pybossa.run(project);
 		});
 	  </script>
+
