@@ -37,6 +37,8 @@
 								<button value="Addition" class="btn btn-warning">Addition</button>
 								<button value="Deletion" class="btn btn-warning">Deletion</button>
 							</div>
+							<br><br><br><br><br>
+							<p><small>Tip: Deletions are found on amending disclosures.</small></p>
 					</div>
 
 					<div id="who" class='question'>
@@ -44,9 +46,10 @@
 						<div class="btn-group-vertical" role="group">
 							<button value="Self" class="btn btn-info">Self</button>
 							<button value="Spouse" class="btn btn-info">Spouse</button>
-							<button value="Self and spouse" class="btn btn-info">Self and spouse</button>
 							<button value="Other" class="btn btn-info">Other dependent</button>
-						</div>			
+						</div>
+						<br><br><br>
+						<p><small>Tip: If it's not immediately clear, flag this page.</small></p>
 					</div>
 
 					<div id="item" class='question'>
@@ -54,8 +57,8 @@
 						<div style="font-size: 0">
 							<div class="btn-group-vertical btn-group" role="group">
 								<button class="btn btn-xs btn-primary" value='Shareholding'><small>1 Shareholding</small></button>
-								<button class="btn btn-xs btn-primary" value='Trust beneficiary'><small>2i Trust <br>beneficiary</small></button>
-								<button class="btn btn-xs btn-primary" value='Trustee'><small>2ii Trustee</small></button>
+								<button class="btn btn-xs btn-primary" value='Trust beneficiary'><small>2(i) Trust <br>beneficiary</small></button>
+								<button class="btn btn-xs btn-primary" value='Trustee'><small>2(ii) Trustee</small></button>
 								<button class="btn btn-xs btn-primary" value='Real estate'><small>3 Real estate</small></button>
 								<button class="btn btn-xs btn-primary" value='Directorship'><small>4 Directorship</small></button>
 								<button class="btn btn-xs btn-primary" value='Partnership'><small>5 Partnership</small></button>
@@ -70,14 +73,14 @@
 								<button class="btn btn-xs btn-primary" value='Travel or hospitality'><small>12 Travel or <br>hospitality</small></button>
 								<button class="btn btn-xs btn-primary" value='Membership'><small>13 Membership</small></button>
 								<button class="btn btn-xs btn-primary" value='Other conflict'><small>14 Other conflict</small></button>
-								<button class="btn btn-primary" value='Not listed'><strong>Not listed</strong></button>	
+								<button class="btn btn-xs btn-primary" value='Not listed'><small>Not listed</small></button>	
 							</div>
 						</div>
 					</div>
 
 					<div id="text">                
-                      <textarea class='textarea' style="width:80%;resize:none;">Remember: one entry per 'thing', and if a record has supplementary information add it after a single space.</textarea>
-						<button class='btn btn-default'>Create entry</button>
+                      <textarea class='textarea' style="width:80%;resize:none;">Tips: type the entry exactly as it appears, one entry per 'thing', and if an entry has supplementary information add each piece of information after a single comma.</textarea>
+						<button class='btn btn-default'>Add to entries list</button>
 					</div>
 				</div>
 
@@ -87,8 +90,8 @@
 				<table class="table">
 					<thead>
 						<th id="#first"></th>
-						<th>Entries</th>
-						<th colspan="2"><button id="entry" class='btn btn-default pull-right'>Add</button></th>
+						<th>List of entries</th>
+						<th colspan="2"><button id="entry" class='btn btn-default pull-right'>Add new entry</button></th>
 											
 					</thead>
 				    <tbody>
@@ -100,7 +103,7 @@
 				</table>
 
 				<div id="perm">
-					<button id="prob" class="btn btn-sm btn-danger">Can't read page</button> <button id="save" class="btn btn-sm btn-success">FINISHED!</button>
+					<button id="prob" class="btn btn-sm btn-danger">Flag this page</button> <button id="save" class="btn btn-sm btn-success">Page finished</button>
 					<div id="foot">
 	   				    <p><span id="i18n_tasks_completed">You have completed</span> <span id="done" class="label label-default"></span> <span id="i18n_tasks_from">out of </span>
 						<span id="total" class="label label-default"></span> pages</p>
@@ -111,9 +114,21 @@
 					</div>
 				</div>
 
+				<div id="saved">
+					<div id="saveoption">
+	   				    <p>You are about to save your entries. Every page counts, and you are doing your bit.</p>
+	   				</div>
+	   				<button id="next" class="btn btn-sm btn-primary">Save and continue</button><br><br>
+   				    <p>Spot something? <a id="tw" href="https://twitter.com/intent/tweet?&amp;text=Dang, it's time to fix the Interests Register for good" data-content="Share on Twitter" class="btn btn-twitter btn-popover" data-url="BURNTHEREGISTER.com" data-original-title="" title="">
+			        <i class="fa fa-twitter"></i> Tweet it</a><br><small>(opens pop-up with image link)</small></p>
+   				    <p>If you ever stuff up, reload your browser window to redo the page, or email jackson@mail.burntheregister.com with the current URL.</p>
+				</div>
+
 				<div id="finished">
-					<p><strong>Congratulations and thanks.</strong></p>
-   				    <p><span id="i18n_tasks_completed">You have completed all your tasks in this project. Spot anything interesting? <a href="http://team.burntheregister.com">Tell the community</a>.</span></p>
+					<h2>Congratulations and thanks</h2>
+   				    <p><span id="i18n_tasks_completed">You have completed all the pages for this MP.</p>
+   				    <p>To move onto another MP, visit to <a href="https://burntheregister.com/project/category/featured/">Contribute</a> page.</p>
+   				    <p>And don't forget to hit Jackson up for a coffee! Email him: jackson@mail.burntheregister.com</p>
 				</div>
 
 	    </div>
@@ -126,8 +141,167 @@
 		<script src="/static/js/pybossa/pybossa.js"></script>
 		<script> // this script creates the options of names to search through from the below array
 
-		var project = 'honmalcolmturnbullmp45' // CHANGE THIS FOR EACH PERSON
+		var project = 'hontonyabbottmp45' // CHANGE THIS FOR EACH PERSON
 		
+		var items = ["impressive",
+							"breathtaking",
+							"amazing",
+							"splendid",
+							"wonderful",
+							"astonishing",
+							"awe-inspiring",
+							"magnificent",
+							"extraordinary",
+							"marvelous",
+							"fabulous",
+							"astounding",
+							"grand",
+							"remarkable",
+							"incredible",
+							"great",
+							"terrific",
+							"stunning",
+							"formidable",
+							"marvellous",
+							"outstanding",
+							"tremendous",
+							"prodigious",
+							"fantastic",
+							"stupendous",
+							"mind-blowing",
+							"staggering",
+							"wondrous",
+							"spectacular",
+							"monumental",
+							"glorious",
+							"majestic",
+							"beautiful",
+							"dazzling",
+							"cool",
+							"lovely",
+							"imposing",
+							"superb",
+							"appalling",
+							"immense",
+							"frightening",
+							"striking",
+							"stupefying",
+							"unbelievable",
+							"exceptional",
+							"divine",
+							"excellent",
+							"eye-opening",
+							"fine",
+							"gargantuan",
+							"fearsome",
+							"overwhelming",
+							"enormous",
+							"mind-boggling",
+							"redoubtable",
+							"swell",
+							"lit",
+							"keen",
+							"vast",
+							"admirable",
+							"sublime",
+							"awing",
+							"colossal",
+							"unusual",
+							"boss",
+							"groovy",
+							"peachy",
+							"startling",
+							"voluminous",
+							"elevated",
+							"gigantic",
+							"large",
+							"massive",
+							"portentous",
+							"scenic",
+							"stately",
+							"wicked",
+							"lofty",
+							"inspiring",
+							"abominable",
+							"towering",
+							"bonny",
+							"dynamite",
+							"fab",
+							"first-rate",
+							"grandiose",
+							"huge",
+							"corking",
+							"singular",
+							"phenomenal",
+							"miraculous",
+							"moving",
+							"neat",
+							"stirring",
+							"bang-up",
+							"dandy",
+							"dignified",
+							"exalted",
+							"fantabulous",
+							"first-class",
+							"hair-raising",
+							"intimidating",
+							"menacing",
+							"monstrous",
+							"phat",
+							"quality",
+							"radical",
+							"stellar",
+							"extensive",
+							"brilliant",
+							"noble",
+							"prize",
+							"supercalifragilisticexpialidocious",
+							"princely",
+							"affecting",
+							"appealing",
+							"brave",
+							"capital",
+							"charming",
+							"classic",
+							"deadly",
+							"dope",
+							"eminent",
+							"fascinating",
+							"five-star",
+							"flagrant",
+							"four-star",
+							"heavenly",
+							"helluva",
+							"high-class",
+							"hot",
+							"impactful",
+							"luxurious",
+							"magnified",
+							"mighty",
+							"mountainous",
+							"nifty",
+							"out-of-sight",
+							"parlous",
+							"prime",
+							"primo",
+							"rare",
+							"sensational",
+							"spine-chilling",
+							"surprising",
+							"top-notch",
+							"top-of-the-line",
+							"top-shelf",
+							"topping",
+							"worshipful",
+							"badass",
+							"good",
+							"mammoth",
+							"noteworthy",
+							"superior",
+							"top",
+							"adorable",
+							"blue-chip"]
+
 		var page = {}
 		var entries = []
 		var e = {}
@@ -152,6 +326,7 @@
 			//initial state
 			$('#qs').hide();
 			$('#qs').children().hide();
+			$('#saved').hide();
 			$('#finished').hide();
 
 			//new entry button
@@ -222,11 +397,9 @@
 
 			//for delete button
 			$('table').on('click','.close',function(){
-				console.log(entries);
 				console.log($(this).attr("value"));
 				entries.splice($(this).attr("value"), 1);
 				lister();
-				console.log(entries);
 			})
 
 
@@ -283,32 +456,40 @@
 					};
 					entries = [];
 			        // load image from flickr
+			        $('#tw').attr('href',"https://twitter.com/intent/tweet?original_referer=http%3A%2F%2FBURNTHEREGISTER.com&amp;tw_p=tweetbutton&amp;url=http%3A%2F%2FBURNTHEREGISTER.com&amp;text=Check this out. "+task.info.link);
 			        $('#loading').hide(0);
-			        $('tbody').html("<tr>					    	<td></td>				    		<td colspan='3'>You don't have any entries here! (yet...?) If there are no entries listed on the page, hit that green button below.</td>				    		</tr>");
+			        $('tbody').html("<tr>					    	<td></td>				    		<td colspan='3'>You don't have any entries here! If there are no entries listed on the page, finish and move on.</td>				    		</tr>");
 	    			$('.panzoom').html('').append(task.info.image);
 	    			$('.panzoom').panzoom("reset");
 	    			$('#foot').slideDown(500);
+
 	    			//for save
 				    $('#save').off('click').on('click', function(evt) {
-			            var answer = [page,entries];
-			            pybossa.saveTask(task.id, answer).done(function() {
-			            	deferred.resolve();
-			            	pybossa.userProgress(project).done(function(data){
-						        if (data.total == data.done) {
-						        	$('#finished').fadeIn(1000);
-						        	$('#entrylist').hide();
-						        	$('#perm').hide();
-						    	};
-						    });
-			            });
+			           	var chars = ["&#9786;","&#10084;","&#9733;","&#9880;","&#127801;","&#127799;","&#10086;","&#9829;","&#128147;","&#128149;","&#128150;","&#128152;","&#128158;","&#9787;","&#128526;","&#128516;","&#128523;"]
+			            var item = items[Math.floor(Math.random()*items.length)];
+			            $('#saveoption').html('<h1>'+chars[Math.floor(Math.random()*chars.length)]+' '+item.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();})+'! '+chars[Math.floor(Math.random()*chars.length)]+'</h1><p>You are about to save your entries. Every page counts, and you are doing your bit.</p>');
+			            $('#saved').fadeIn(1000);
+			            $('#entrylist').hide();
 			            $('#qs').hide();
-			            $('#foot').slideUp(500)
+			            $('#foot').hide()
 
 			        });
 
 			        //for illegible button
 					$('#prob').off('click').on('click',function(evt){
 						page['problem'] = true;
+
+						$('#saveoption').html('<p>To confirm this page is a problem, press the button below. It will flag the page in the system and load the next one. If you have changed your mind, reload the page in your browser.</p>');
+			            $('#saved').fadeIn(1000);
+			            $('#entrylist').hide();
+			            $('#qs').hide();
+			            $('#foot').hide()
+					});
+
+					//for next
+					$('#next').off('click').on('click',function(evt){
+						console.log('Saving entries...');
+						console.log(answer);
 						var answer = [page,entries];
 			            pybossa.saveTask(task.id, answer).done(function() {
 			            	deferred.resolve();
@@ -320,9 +501,12 @@
 						    	};
 						    });
 			            });
-			            $('#qs').hide()
-			            $('#foot').slideUp(500)
-					})
+			            $('#saved').hide();
+			            $('#entrylist').fadeIn(1000);
+			            $('#qs').hide();
+			            $('#foot').show();
+			            $('#foot').slideUp(500);
+					});
 			    
 			    } else {
 			        $("#end").html("<h2>Yahoo! That was the last page you had left to do. Thanks for being part of the BURN.</h2>")
@@ -330,5 +514,22 @@
 			});
 			pybossa.run(project);
 		});
+	  </script>
+	  <script>window.twttr = (function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0],
+		    t = window.twttr || {};
+		  if (d.getElementById(id)) return t;
+		  js = d.createElement(s);
+		  js.id = id;
+		  js.src = "https://platform.twitter.com/widgets.js";
+		  fjs.parentNode.insertBefore(js, fjs);
+
+		  t._e = [];
+		  t.ready = function(f) {
+		    t._e.push(f);
+		  };
+
+		  return t;
+		}(document, "script", "twitter-wjs"));
 	  </script>
 
