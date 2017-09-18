@@ -79,8 +79,9 @@
 					</div>
 
 					<div id="text">                
-                      <textarea class='textarea' style="width:80%;resize:none;">Tips: type the entry exactly as it appears, one entry per 'thing', and if an entry has supplementary information add each piece of information after a single comma.</textarea>
+                      <textarea class='textarea' style="width:80%;height:150px;resize:none;"></textarea>
 						<button class='btn btn-default'>Add to entries list</button>
+						<p style="line-height:100%"><small>Tips: type the entry exactly as it appears, one entry per 'thing', full sentences/paragraphs copied in full, and use a comma where an entry runs across two columns.</small></p>
 					</div>
 				</div>
 
@@ -362,11 +363,6 @@
 				});
 				e['item'] = $(this).attr("value");
 			});
-          
-            //to clear text
-          	
-            $('.textarea').click(function(){
-              $(this).val('')});
             
 			//for submit button
 			$('#text > button').click(function(){
